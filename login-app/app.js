@@ -2,20 +2,25 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const bcrypt = require("bcryptjs");
 const fs = require("fs");
+const path = require("path");
 
 const app = express();
 
 // Middleware
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(__dirname)); // Serve static files from the same directory
-app.use(express.static("public")); // Serve static files (e.g., login.html)
 
 // Load users from file
 let users = loadUsers();
 
+// Serve the index.html page
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "index.html"));
+});
+
 // Serve login page
 app.get("/login", (req, res) => {
-  res.sendFile(__dirname + "/login.html");
+  res.sendFile(path.join(__dirname, "login.html"));
 });
 
 // Handle login form submission
@@ -45,7 +50,7 @@ function loadUsers() {
   }
 }
 
-const PORT = process.env.PORT || 2998;
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  console.log("Server==\x1b[0m\x1b[32msuccess\x1b[0m\x1b[37m__________\x1b[0m\x1b[33mapp.js\x1b[0m\x1b[37m running \x1b[0m\x1b[37mTeachers-login\x1b[0m\x1b[37m__________\x1b[0mon \x1b[31mport \x1b[0m\x1b[31m2998\x1b[0m");
+  console.log(`Server running on port ${PORT}`);
 });
