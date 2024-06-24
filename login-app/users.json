@@ -1,0 +1,17 @@
+[
+  {
+    "username": "Mustafizur sir",
+    "passwordHash": "$2b$10$AJMdMAl0F4ejvWGawIn/eed4nhJX/pjw12nLad9b/nxyOJ/rBe3ka",
+    "redirectUrl": "http://192.168.0.102:3018"
+  },
+  {
+    "username": "user",
+    "passwordHash": "$2b$10$2FXYHfqwCaLNtWph1kFl6.Ui0ONg/OPw40L1hMZrISHGfF6hUY0eO",
+    "redirectUrl": "http://192.168.0.102:3018"
+  },
+  {
+    "username": "user3",
+    "passwordHash": "$2b$10$2R5HCaX1qgqiXsxqximdI.WZgGCVhF57rKBa/ue8RSPl2paDrtKfS",
+    "redirectUrl": "http://site3.com"
+  }
+]
