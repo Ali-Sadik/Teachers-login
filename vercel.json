@@ -2,10 +2,9 @@
   "version": 2,
   "builds": [{ "src": "login-app/app.js", "use": "@vercel/node" }],
   "routes": [
-    { "handle": "filesystem" },
     {
       "src": "/(.*)",
-      "dest": "/app.js"
+      "dest": "login-app/app.js"
     }
   ]
 }
