@@ -2,6 +2,6 @@
   "version": 2,
   "routes": [
     { "src": "/api/login", "dest": "api/login.js" },
-    { "handle": "filesystem" } // This line ensures Vercel serves static files from the root directory
+    { "handle": "filesystem" }
   ]
 }
