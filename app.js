@@ -7,8 +7,8 @@ const app = express();
 
 // Middleware
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static(__dirname)); // Serve static files from the same directory
-app.use(express.static("public")); // Serve static files (e.g., login.html)
+app.use(express.static(__dirname)); // Serve static files from the root directory
+app.use(express.static("public")); // Serve static files from the 'public' directory
 
 // Load users from file
 let users = loadUsers();
@@ -47,5 +47,5 @@ function loadUsers() {
 
 const PORT = process.env.PORT || 2998;
 app.listen(PORT, () => {
-  console.log("Server==\x1b[0m\x1b[32msuccess\x1b[0m\x1b[37m__________\x1b[0m\x1b[33mapp.js\x1b[0m\x1b[37m running \x1b[0m\x1b[37mTeachers-login\x1b[0m\x1b[37m__________\x1b[0mon \x1b[31mport \x1b[0m\x1b[31m2998\x1b[0m");
+  console.log("Server running on port " + PORT);
 });
