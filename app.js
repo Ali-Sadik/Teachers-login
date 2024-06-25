@@ -48,6 +48,7 @@ app.post("/login", (req, res) => {
 function loadUsers() {
   try {
     const data = fs.readFileSync("users.json");
+    console.log("Loaded users data:", data);
     return JSON.parse(data);
   } catch (err) {
     console.error("Error loading users:", err);
