@@ -8,7 +8,7 @@ const app = express();
 
 // Middleware
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static("public")); // Serve static files from the 'public' directory
+app.use(express.static(path.join(__dirname, "public"))); // Serve static files from the 'public' directory
 
 // Load users from file
 let users = loadUsers();
