@@ -1,13 +1,14 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-const bcrypt = require('bcryptjs');
+const bcrypt = require('bcrypt');
 const fs = require("fs");
 
 const app = express();
 
 // Middleware
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static("public")); // Serve static files from the 'public' directory
+app.use(express.static(__dirname)); // Serve static files from the same directory
+app.use(express.static("public")); // Serve static files (e.g., login.html)
 
 // Load users from file
 let users = loadUsers();
@@ -20,25 +21,14 @@ app.get("/login", (req, res) => {
 // Handle login form submission
 app.post("/login", (req, res) => {
   const { username, password } = req.body;
-  console.log(`Received login attempt for username: ${username}`);
-
   const user = users.find((user) => user.username === username);
   if (!user) {
-    console.log("User not found");
     return res.redirect("/login?error=user-not-found");
   }
-
   bcrypt.compare(password, user.passwordHash, (err, result) => {
-    if (err) {
-      console.error("Error comparing passwords:", err);
-      return res.redirect("/login?error=server-error");
-    }
-
     if (result) {
-      console.log("Login successful");
       return res.redirect(user.redirectUrl); // Redirect based on user's redirection URL
     } else {
-      console.log("Invalid password");
       return res.redirect("/login?error=invalid-password");
     }
   });
@@ -48,7 +38,6 @@ app.post("/login", (req, res) => {
 function loadUsers() {
   try {
     const data = fs.readFileSync("users.json");
-    console.log("Loaded users data:", data);
     return JSON.parse(data);
   } catch (err) {
     console.error("Error loading users:", err);
@@ -58,5 +47,5 @@ function loadUsers() {
 
 const PORT = process.env.PORT || 2998;
 app.listen(PORT, () => {
-  console.log("Server running on port " + PORT);
+  console.log("Server==\x1b[0m\x1b[32msuccess\x1b[0m\x1b[37m__________\x1b[0m\x1b[33mapp.js\x1b[0m\x1b[37m running \x1b[0m\x1b[37mTeachers-login\x1b[0m\x1b[37m__________\x1b[0mon \x1b[31mport \x1b[0m\x1b[31m2998\x1b[0m");
 });
