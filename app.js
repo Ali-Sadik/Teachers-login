@@ -1,6 +1,6 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-const bcrypt = require("bcryptjs");
+const bcrypt = require('bcrypt');
 const fs = require("fs");
 
 const app = express();
