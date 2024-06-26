@@ -10,8 +10,8 @@
     "redirectUrl": "http://192.168.0.102:3018"
   },
   {
-    "username": "user3",
-    "passwordHash": "$2b$10$2R5HCaX1qgqiXsxqximdI.WZgGCVhF57rKBa/ue8RSPl2paDrtKfS",
-    "redirectUrl": "http://site3.com"
+    "username": "user26",
+    "passwordHash": "$2b$10$iPfr4xlAY/nZntBWOYMN..iHZczJHPPizPvlO4leLEfyo8p8NOYK2",
+    "redirectUrl": "https://ece-teacher-26.vercel.app/"
   }
 ]
