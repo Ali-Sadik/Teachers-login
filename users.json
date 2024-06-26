@@ -9,6 +9,11 @@
     "passwordHash": "$2b$10$2FXYHfqwCaLNtWph1kFl6.Ui0ONg/OPw40L1hMZrISHGfF6hUY0eO",
     "redirectUrl": "http://192.168.0.102:3018"
   },
+   {
+    "username": "user21",
+    "passwordHash": "$2b$10$iPfr4xlAY/nZntBWOYMN..iHZczJHPPizPvlO4leLEfyo8p8NOYK2",
+    "redirectUrl": "https://ece-teacher-21.vercel.app/"
+  },
   {
     "username": "user26",
     "passwordHash": "$2b$10$iPfr4xlAY/nZntBWOYMN..iHZczJHPPizPvlO4leLEfyo8p8NOYK2",
