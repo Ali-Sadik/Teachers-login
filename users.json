@@ -13,5 +13,10 @@
     "username": "user26",
     "passwordHash": "$2b$10$iPfr4xlAY/nZntBWOYMN..iHZczJHPPizPvlO4leLEfyo8p8NOYK2",
     "redirectUrl": "https://ece-teacher-26.vercel.app/"
+  },
+  {
+    "username": "user25",
+    "passwordHash": "$2b$10$iPfr4xlAY/nZntBWOYMN..iHZczJHPPizPvlO4leLEfyo8p8NOYK2",
+    "redirectUrl": "https://ece-teacher-25.vercel.app/"
   }
 ]
