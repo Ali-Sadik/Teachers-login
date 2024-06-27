@@ -1,376 +1,508 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <link rel="icon" type="image/ico" href="favicon.ico" />
-  <title>Log in to your account</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <style>
-    @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&display=swap");
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="icon" type="image/ico" href="favicon.ico" />
+    <title>Log in to your account</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&display=swap");
 
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-
-    body {
-      font-family: "Manrope", sans-serif;
-      background-size: cover;
-      background-position: top 0%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      margin: 0;
-    }
-
-    label {
-      font-size: 12px;
-      font-weight: 500;
-      margin-bottom: 6px;
-    }
-
-    #forgot-pass {
-      color: #00a651;
-      font-size: 12px;
-      margin-top: 6px;
-      text-align: right;
-    }
-
-    #card {
-      background-color: #ffffff;
-      border-radius: 12px;
-      box-shadow: 0 0 40px rgba(0, 0, 0, 0.1);
-      height: 472px;
-      width: 350px;
-      margin: auto;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    #card:hover {
-      transform: scale(1);
-      box-shadow: 0 0 60px rgba(0, 0, 0, 0.2);
-    }
-
-    #card-content {
-      padding: 24px 44px;
-    }
-
-    #card-title {
-      font-size: 24px;
-      font-weight: 600;
-      text-align: center;
-      margin-bottom: 20px;
-      margin-top: 10px;
-    }
-
-    #signup {
-      color: #00a651;
-      font-size: 12px;
-      margin-top: 16px;
-      text-align: center;
-    }
-
-    #submit-btn {
-      background: white;
-      border-color: transparent;
-      border-radius: 30px;
-      cursor: pointer;
-      color: #00a651;
-      font-size: 15px;
-      font-weight: 600;
-      height: 42.3px;
-      margin: 30px auto 0;
-      transition: 0.25s;
-      width: 100%;
-    }
-
-    #submit-btn:hover {
-      background: #00a651;
-      color: white;
-    }
-
-    .form {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .form-border {
-      background: -webkit-linear-gradient(right, #a6f77b, #2ec06f);
-      height: 1px;
-      width: 100%;
-    }
-
-    .form-content {
-      background: #fbfbfb;
-      border: none;
-      border-radius: 4px;
-      font-size: 14px;
-      margin-bottom: 16px;
-      padding: 12px;
-      width: 92%;
-    }
-
-    .underline-title {
-      background: -webkit-linear-gradient(right, #a6f77b, #2ec06f);
-      height: 2px;
-      margin: -1.1rem auto 0 auto;
-      width: 89px;
-    }
-
-    .password-container {
-      position: relative;
-    }
-
-    .toggle-password {
-      position: absolute;
-      right: 10px;
-      top: 50%;
-      transform: translateY(-50%);
-      cursor: pointer;
-      font-size: 12px;
-      color: #00a651;
-    }
-
-    .footer {
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      text-align: center;
-      background-color: transparent;
-      padding: 10px 0;
-      margin-top: auto;
-      color: black;
-      font-size: 12px;
-    }
-
-    .logo {
-      margin-top: 10px; /* Adjust margin as needed */
-      text-align: center;
-      margin-bottom: -20px;
-    }
-
-    /* CSS styles */
-    #progress-container {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 4px;
-      background-color: transparent;
-      z-index: 9999;
-    }
-
-    #progress-bar {
-      height: 4px;
-      background-color: #00a651;
-      width: 0;
-      animation: progressBarAnimation 1s forwards;
-    }
-
-    @keyframes progressBarAnimation {
-      from {
-        width: 0;
+      a {
+        text-decoration: none;
+        color: inherit;
       }
-      to {
-        width: 100%;
+
+      body {
+        font-family: "Manrope", sans-serif;
+        background-size: cover;
+        background-position: top 0%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        margin: 0;
       }
-    }
+      /* Default scrollbar styles */
+      body::-webkit-scrollbar {
+        width: 12px; /* Width of the scrollbar */
+      }
 
-    .modal {
-      display: none; /* Hidden by default */
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.5); /* Dim background */
-      justify-content: center;
-      align-items: center;
-      z-index: 1000;
-    }
+      body::-webkit-scrollbar-thumb {
+        background-color: var(
+          --scrollbar-thumb-color,
+          #ccc
+        ); /* Default thumb color */
+        border-radius: 6px; /* Rounded corners of the scrollbar thumb */
+      }
 
-    .modal-content {
-      background-color: #fff;
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      max-width: 400px;
-      width: 100%;
-      text-align: center;
-      position: relative;
-    }
+      /* Dark mode scrollbar styles */
+      body.dark-mode::-webkit-scrollbar-thumb {
+        background-color: var(
+          --scrollbar-thumb-color,
+          #333
+        ); /* Dark mode thumb color */
+      }
 
-    .modal h1 {
-      color: #ff0000;
-      margin-bottom: 20px;
-    }
+      /* Light mode scrollbar styles */
+      body.light-mode::-webkit-scrollbar-thumb {
+        background-color: var(
+          --scrollbar-thumb-color,
+          #ccc
+        ); /* Light mode thumb color */
+      }
+      label {
+        font-size: 12px;
+        font-weight: 500;
+        margin-bottom: 6px;
+      }
 
-    .modal p {
-      color: #333;
-      margin-bottom: 20px;
-    }
+      #forgot-pass {
+        color: #00a651;
+        font-size: 12px;
+        margin-top: 6px;
+        text-align: right;
+      }
 
-    .btn {
-      display: inline-block;
-      padding: 10px 20px;
-      font-size: 15px;
-      color: #fff;
-      background-color: #00a651;
-      border: none;
-      border-radius: 30px;
-      text-decoration: none;
-      transition: background-color 0.3s;
-      margin-bottom: 20px;
-    }
+      #card {
+        background-color: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 0 40px rgba(0, 0, 0, 0.1);
+        height: 472px;
+        width: 350px;
+        margin: auto;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      #card:hover {
+        transform: scale(1);
+        box-shadow: 0 0 60px rgba(0, 0, 0, 0.2);
+      }
 
-    .btn:hover {
-      background-color: #0e5e35;
-    }
+      #card-content {
+        padding: 24px 44px;
+      }
 
-    .close-btn {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      background: none;
-      border: none;
-      font-size: 20px;
-      cursor: pointer;
-    }
+      #card-title {
+        font-size: 24px;
+        font-weight: 600;
+        text-align: center;
+        margin-bottom: 20px;
+        margin-top: 10px;
+      }
 
-    @media (width < 768px)
-    {
+      #signup {
+        color: #00a651;
+        font-size: 12px;
+        margin-top: 16px;
+        text-align: center;
+      }
 
       #submit-btn {
-      background: #00a651;
-      border-color: transparent;
-      border-radius: 30px;
-      cursor: pointer;
-      color: white;
-    }
-    #submit-btn:hover
-    {
-      background: #00a651;
-      color: white;
-    }
-      .modal-content
-      {
-        max-width: 320px;
-
+        background: white;
+        border-color: transparent;
+        border-radius: 30px;
+        cursor: pointer;
+        color: #00a651;
+        font-size: 15px;
+        font-weight: 600;
+        height: 42.3px;
+        margin: 30px auto 0;
+        transition: 0.25s;
+        width: 100%;
       }
+
+      #submit-btn:hover {
+        background: #00a651;
+        color: white;
+      }
+
+      .form {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .form-border {
+        background: -webkit-linear-gradient(right, #a6f77b, #2ec06f);
+        height: 1px;
+        width: 100%;
+      }
+
+      .form-content {
+        background: #fbfbfb;
+        border: none;
+        border-radius: 8px;
+        font-size: 14px;
+        margin-bottom: 16px;
+        padding: 12px;
+        width: 92%;
+      }
+
+      .underline-title {
+        background: -webkit-linear-gradient(right, #a6f77b, #2ec06f);
+        height: 2px;
+        margin: -1.1rem auto 0 auto;
+        width: 89px;
+      }
+
+      .password-container {
+        position: relative;
+      }
+
+      .toggle-password {
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        cursor: pointer;
+        font-size: 12px;
+        color: #00a651;
+      }
+
+      .footer {
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        background-color: transparent;
+        padding: 10px 0;
+        margin-top: auto;
+        color: black;
+        font-size: 12px;
+      }
+
+      .logo {
+        margin-top: 10px; /* Adjust margin as needed */
+        text-align: center;
+        margin-bottom: -20px;
+      }
+
+      /* CSS styles */
+      #progress-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background-color: transparent;
+        z-index: 9999;
+      }
+
+      #progress-bar {
+        height: 4px;
+        background-color: #00a651;
+        width: 0;
+        animation: progressBarAnimation 1s forwards;
+      }
+
+      @keyframes progressBarAnimation {
+        from {
+          width: 0;
+        }
+        to {
+          width: 100%;
+        }
+      }
+
+      .modal {
+        display: none; /* Hidden by default */
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5); /* Dim background */
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+      }
+
+      .modal-content {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        max-width: 400px;
+        width: 100%;
+        text-align: center;
+        position: relative;
+      }
+
+      .modal h1 {
+        color: #ff0000;
+        margin-bottom: 20px;
+      }
+
       .modal p {
-      font-size: 12px;
-    }
-      body
-      {
-        margin-top: -60px;
+        color: #333;
+        margin-bottom: 20px;
       }
-      #card {
-      background-color: #ffffff;
-      box-shadow: none;
-    }
-    #card:hover
-    {
-      box-shadow: none;
-    }
-    .footer
-    {
-      font-size: 10px;
-    }
-    }
 
-    .container2 {
+      .btn {
+        display: inline-block;
+        padding: 10px 20px;
+        font-size: 15px;
+        color: #fff;
+        background-color: #00a651;
+        border: none;
+        border-radius: 30px;
+        text-decoration: none;
+        transition: background-color 0.3s;
+        margin-bottom: 20px;
+      }
+
+      .btn:hover {
+        background-color: #0e5e35;
+      }
+
+      .close-btn {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background: none;
+        border: none;
+        font-size: 20px;
+        cursor: pointer;
+      }
+
+      @media (width < 768px) {
+        #submit-btn {
+          background: #00a651;
+          border-color: transparent;
+          border-radius: 30px;
+          cursor: pointer;
+          color: white;
+        }
+        #submit-btn:hover {
+          background: #00a651;
+          color: white;
+        }
+        
+        .modal-content {
+          max-width: 320px;
+        }
+        .modal p {
+          font-size: 12px;
+        }
+        body {
+          margin-top: -60px;
+        }
+        #card {
+          background-color: #ffffff;
+          box-shadow: none;
+        }
+        #card:hover {
+          box-shadow: none;
+        }
+        .footer {
+          font-size: 10px;
+        }
+      }
+
+      .container2 {
         background-color: transparent;
         padding: 20px;
-        margin-top:-150px;
+        margin-top: -150px;
         font-size: 15px;
         text-align: center;
         text-decoration: underline;
         color: #00a651;
       }
-  </style>
-</head>
+      /* Toggle Switch Styles */
+      .toggle-container {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        display: none;
+      }
 
-<body>
-  <div id="progress-container">
-    <div id="progress-bar"></div>
-  </div>
-  <div id="card">
-    <div id="card-content">
-      <div class="logo">
-        <img src="/kuetlogo.png" alt="logo" width="70" />
-        <!-- Adjust width as needed -->
-      </div>
-      <div id="card-title">
-        <h3>Teacher's <span style="color: #00a651">Panel</span></h3>
-        <div class="underline-title"></div>
-      </div>
-      <form method="post" class="form" action="/login">
-        <label for="user-username">Username:</label>
-        <input
-          id="user-username"
-          class="form-content"
-          type="text"
-          name="username"
-          autocomplete="on"
-          required
-          style="font-family: Manrope, sans-serif"
-        />
-        <div class="form-border"></div>
-        <label for="user-password">Password:</label>
-        <div class="password-container">
+      .toggle-switch {
+        position: relative;
+        display: inline-block;
+        width: 60px;
+        height: 34px;
+      }
+
+      .toggle-switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+      }
+
+      .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        transition: 0.4s;
+        border-radius: 34px;
+      }
+
+      .slider:before {
+        position: absolute;
+        content: "";
+        height: 26px;
+        width: 26px;
+        left: 4px;
+        bottom: 4px;
+        background-color: white;
+        transition: 0.4s;
+        border-radius: 50%;
+      }
+
+      input:checked + .slider {
+        background-color: #00a651;
+      }
+
+      input:checked + .slider:before {
+        transform: translateX(26px);
+      }
+      body.dark-mode {
+        background-color: black;
+        color: white;
+      }
+      body.dark-mode #card {
+        background-color: #0a0a0a;
+        border: 1px solid #888;
+        border-radius: 12px;
+        box-shadow: 0 0 40px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      body.dark-mode #card:hover {
+        box-shadow: 0 0 100px rgba(255, 255, 255, 0.3);
+      }
+      body.dark-mode #submit-btn {
+        background: #0a0a0a;
+        border-color: transparent;
+        border-radius: 30px;
+        cursor: pointer;
+        color: #00a651;
+        font-size: 15px;
+        font-weight: 600;
+        height: 42.3px;
+        margin: 30px auto 0;
+        transition: 0.25s;
+        width: 100%;
+      }
+      body.dark-mode #submit-btn:hover {
+        background: #00a651;
+        color: white;
+      }
+      body.dark-mode .footer
+      {
+        color: white;
+      }
+      body.dark-mode .modal-content {
+        background-color: #0a0a0a;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        max-width: 400px;
+        width: 100%;
+        text-align: center;
+        position: relative;
+      }
+
+      body.dark-mode .modal h1 {
+        color: white;
+      }
+
+      body.dark-mode .modal p {
+        color: #e3e3e3;
+      }
+      body.dark-mode .close-btn {
+        color: white;
+      }
+
+
+    </style>
+  </head>
+
+  <body>
+    <div id="progress-container">
+      <div id="progress-bar"></div>
+    </div>
+    <div id="card">
+      <div id="card-content">
+        <div class="logo">
+          <img src="/kuetlogo.png" alt="logo" width="70" />
+          <!-- Adjust width as needed -->
+        </div>
+        <div id="card-title">
+          <h3>Teacher's <span style="color: #00a651">Panel</span></h3>
+          <div class="underline-title"></div>
+        </div>
+        <form method="post" class="form" action="/login">
+          <label for="user-username">Username:</label>
           <input
-            id="user-password"
+            id="user-username"
             class="form-content"
-            type="password"
-            name="password"
+            type="text"
+            name="username"
+            autocomplete="on"
             required
             style="font-family: Manrope, sans-serif"
           />
-          <span class="toggle-password" onclick="togglePasswordVisibility()">Show password</span>
-        </div>
-        <div class="form-border"></div>
-        <input
-          id="submit-btn"
-          type="submit"
-          name="submit"
-          value="LOGIN"
-          style="font-family: Manrope, sans-serif; margin-bottom: 10px"
-        />
-      </form>
+          <div class="form-border"></div>
+          <label for="user-password">Password:</label>
+          <div class="password-container">
+            <input
+              id="user-password"
+              class="form-content"
+              type="password"
+              name="password"
+              required
+              style="font-family: Manrope, sans-serif"
+            />
+            <span class="toggle-password" onclick="togglePasswordVisibility()"
+              >Show password</span
+            >
+          </div>
+          <div class="form-border"></div>
+          <input
+            id="submit-btn"
+            type="submit"
+            name="submit"
+            value="LOGIN"
+            style="font-family: Manrope, sans-serif; margin-bottom: 10px"
+          />
+        </form>
+      </div>
     </div>
-  </div>
     <div class="container2">
-    <p>
-      <a href="https://kuet-study-materials.vercel.app/" id="return">Return to homepage</a></p>
-  </div>
-<div class="modal" id="errorModal">
-    <div class="modal-content">
-      <button class="close-btn" onclick="closeModal()">×</button>
-      <h1 id="errorTitle"></h1>
-      <p id="errorMessage"></p>
+      <p style="margin-bottom: -20px;">
+        <a href="https://kuet-study-materials.vercel.app/" id="return">Return to homepage</a>
+      </p>
     </div>
-  </div>
-  
+    <div class="modal" id="errorModal">
+      <div class="modal-content">
+        <button class="close-btn" onclick="closeModal()">×</button>
+        <h1 id="errorTitle"></h1>
+        <p id="errorMessage"></p>
+      </div>
+    </div>
 
-  <script>
-    // Function to show progress bar for 1 second
-    function showProgressBar(callback) {
-      // Show progress bar
-      document.getElementById("progress-bar").style.display = "block";
+    <script>
+      // Function to show progress bar for 1 second
+      function showProgressBar(callback) {
+        // Show progress bar
+        document.getElementById("progress-bar").style.display = "block";
 
-      // Hide progress bar after 1 second
-      setTimeout(function () {
-        document.getElementById("progress-bar").style.display = "none";
-        if (callback) {
-          callback(); // Execute callback function
-        }
-      }, 1200);
-    }
+        // Hide progress bar after 1 second
+        setTimeout(function () {
+          document.getElementById("progress-bar").style.display = "none";
+          if (callback) {
+            callback(); // Execute callback function
+          }
+        }, 1200);
+      }
 
- // Attach click event listener to "Don't have an account?" link
- document
+      // Attach click event listener to "Don't have an account?" link
+      document
         .getElementById("return")
         .addEventListener("click", function (event) {
           event.preventDefault(); // Prevent default link behavior
@@ -379,63 +511,152 @@
           }); // Show progress bar when link is clicked
         });
 
-    // Attach click event listener to "LOGIN" button
-    document
-      .getElementById("submit-btn")
-      .addEventListener("click", function (event) {
-        showProgressBar(); // Show progress bar when button is clicked
+      // Attach click event listener to "LOGIN" button
+      document
+        .getElementById("submit-btn")
+        .addEventListener("click", function (event) {
+          showProgressBar(); // Show progress bar when button is clicked
+        });
+
+      // Show progress bar when page loads
+      window.addEventListener("load", function () {
+        showProgressBar();
+
+        // Check URL for error parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        const error = urlParams.get("error");
+        if (error === "user-not-found") {
+          showModal(
+            "User Not Found!",
+            "The username you entered does not exist in the database.If you are facing trouble again, please contact with the authority."
+          );
+          urlParams.delete("error"); // Remove error parameter
+          window.history.replaceState(
+            {},
+            document.title,
+            window.location.pathname
+          ); // Update URL without refreshing
+        } else if (error === "invalid-password") {
+          showModal(
+            "Invalid Password!",
+            "The password you entered is incorrect.Please check again your password and try again.If you are facing trouble again, please contact with the authority."
+          );
+          urlParams.delete("error"); // Remove error parameter
+          window.history.replaceState(
+            {},
+            document.title,
+            window.location.pathname
+          ); // Update URL without refreshing
+        }
       });
 
-    // Show progress bar when page loads
-    window.addEventListener("load", function () {
-      showProgressBar();
-
-      // Check URL for error parameter
-      const urlParams = new URLSearchParams(window.location.search);
-      const error = urlParams.get("error");
-      if (error === "user-not-found") {
-        showModal("User Not Found!", "The username you entered does not exist in the database.If you are facing trouble again, please contact with the authority.");
-        urlParams.delete("error"); // Remove error parameter
-        window.history.replaceState({}, document.title, window.location.pathname); // Update URL without refreshing
-      } else if (error === "invalid-password") {
-        showModal("Invalid Password!", "The password you entered is incorrect.Please check again your password and try again.If you are facing trouble again, please contact with the authority.");
-        urlParams.delete("error"); // Remove error parameter
-        window.history.replaceState({}, document.title, window.location.pathname); // Update URL without refreshing
+      // Function to toggle password visibility
+      function togglePasswordVisibility() {
+        const passwordInput = document.getElementById("user-password");
+        const togglePasswordText = document.querySelector(".toggle-password");
+        if (passwordInput.type === "password") {
+          passwordInput.type = "text";
+          togglePasswordText.textContent = "Hide password";
+        } else {
+          passwordInput.type = "password";
+          togglePasswordText.textContent = "Show password";
+        }
       }
-    });
 
-    // Function to toggle password visibility
-    function togglePasswordVisibility() {
-      const passwordInput = document.getElementById('user-password');
-      const togglePasswordText = document.querySelector('.toggle-password');
-      if (passwordInput.type === 'password') {
-        passwordInput.type = 'text';
-        togglePasswordText.textContent = 'Hide password';
-      } else {
-        passwordInput.type = 'password';
-        togglePasswordText.textContent = 'Show password';
+      // Function to show the modal with error message
+      function showModal(title, message) {
+        document.getElementById("errorTitle").textContent = title;
+        document.getElementById("errorMessage").textContent = message;
+        document.getElementById("errorModal").style.display = "flex";
       }
-    }
 
-    // Function to show the modal with error message
-    function showModal(title, message) {
-      document.getElementById('errorTitle').textContent = title;
-      document.getElementById('errorMessage').textContent = message;
-      document.getElementById('errorModal').style.display = 'flex';
-    }
+      // Function to close the modal
+      function closeModal() {
+        document.getElementById("errorModal").style.display = "none";
+      }
 
-    // Function to close the modal
-    function closeModal() {
-      document.getElementById('errorModal').style.display = 'none';
-    }
-  </script>
-  <div class="footer">
-    ©2024, Designed and developed by
-    <a
-      href="https://teamsiliconx.github.io/aboutus"
-      style="color: #00a651; text-decoration: none;"
-      >Siliconx Softwares</a
-    >(ECE, KUET). Powered by Central Computer Center(KUET). All rights reserved.
-  </div>
-</body>
+      document.addEventListener("DOMContentLoaded", (event) => {
+        const toggleButton = document.getElementById("theme-toggle");
+
+        // Function to set theme
+        const setTheme = (theme) => {
+          if (theme === "dark-mode") {
+            document.body.classList.add("dark-mode");
+            document.body.classList.remove("light-mode");
+            toggleButton.checked = true;
+          } else {
+            document.body.classList.remove("dark-mode");
+            document.body.classList.add("light-mode");
+            toggleButton.checked = false;
+          }
+          updateScrollbarColor(theme); // Update scrollbar color based on theme
+        };
+
+        // Function to detect and apply system theme preference
+        const applySystemThemePreference = () => {
+          const prefersDarkScheme = window.matchMedia(
+            "(prefers-color-scheme: dark)"
+          ).matches;
+          setTheme(prefersDarkScheme ? "dark-mode" : "light-mode");
+        };
+
+        // Load user's theme preference from localStorage
+        const currentTheme = localStorage.getItem("theme");
+        if (currentTheme) {
+          setTheme(currentTheme);
+        } else {
+          applySystemThemePreference(); // Apply system theme preference initially
+        }
+
+        // Listen for changes in the theme toggle button
+        toggleButton.addEventListener("change", () => {
+          const newTheme = toggleButton.checked ? "dark-mode" : "light-mode";
+          setTheme(newTheme);
+          // Save user's preference to localStorage
+          if (newTheme === "dark-mode") {
+            localStorage.setItem("theme", "dark-mode");
+          } else {
+            localStorage.removeItem("theme");
+          }
+        });
+
+        // Listen for changes in system theme preference
+        window
+          .matchMedia("(prefers-color-scheme: dark)")
+          .addEventListener("change", (e) => {
+            if (!localStorage.getItem("theme")) {
+              // Only change if user has not set a preference
+              applySystemThemePreference();
+            }
+          });
+
+        // Function to update scrollbar color based on theme
+        const updateScrollbarColor = (theme) => {
+          // Determine the scrollbar thumb color based on the theme
+          const scrollbarThumbColor = theme === "dark-mode" ? "#333" : "#ccc";
+          // Set the scrollbar thumb color dynamically using CSS variables
+          document.documentElement.style.setProperty(
+            "--scrollbar-thumb-color",
+            scrollbarThumbColor
+          );
+        };
+      });
+    </script>
+    <div class="toggle-container">
+      <p class="darktext">Dark mode</p>
+      <label class="toggle-switch">
+        <input type="checkbox" id="theme-toggle" />
+        <span class="slider"></span>
+      </label>
+    </div>
+    <div class="footer">
+      ©2024, Designed and developed by
+      <a
+        href="https://teamsiliconx.github.io/aboutus"
+        style="color: #00a651; text-decoration: none"
+        >Siliconx Softwares</a
+      >(ECE, KUET). Powered by Central Computer Center(KUET). All rights
+      reserved.
+    </div>
+  </body>
 </html>
