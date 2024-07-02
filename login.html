@@ -3,9 +3,13 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <link rel="icon" type="image/ico" href="favicon.ico" />
+    <link rel="icon" type="image/png" href="kuetlogo.png" />
     <title>Log in to your account</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&display=swap");
 
@@ -16,6 +20,12 @@
 
       body {
         font-family: "Manrope", sans-serif;
+        background-image: linear-gradient(
+            75deg,
+            rgb(6 6 6 / 80%) 8%,
+            transparent
+          ),
+          url("st.png");
         background-size: cover;
         background-position: top 0%;
         display: flex;
@@ -72,12 +82,12 @@
         box-shadow: 0 0 40px rgba(0, 0, 0, 0.1);
         height: 472px;
         width: 350px;
-        margin: auto;
+        margin-top: 300px;
         transition: transform 0.3s ease, box-shadow 0.3s ease;
       }
       #card:hover {
         transform: scale(1);
-        box-shadow: 0 0 60px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 0 100px rgba(0, 0, 0, 0.2);
       }
 
       #card-content {
@@ -102,7 +112,7 @@
       #submit-btn {
         background: white;
         border-color: transparent;
-        border-radius: 30px;
+        border-radius: 8px;
         cursor: pointer;
         color: #00a651;
         font-size: 15px;
@@ -130,9 +140,9 @@
       }
 
       .form-content {
-        background: #fbfbfb;
+        background: white;
         border: none;
-        border-radius: 8px;
+        border-radius: 4px;
         font-size: 14px;
         margin-bottom: 16px;
         padding: 12px;
@@ -212,7 +222,7 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background-color: rgba(0, 0, 0, 0.5); /* Dim background */
+        background-color: rgba(0, 0, 0, 0.4); /* Dim background */
         justify-content: center;
         align-items: center;
         z-index: 1000;
@@ -222,7 +232,7 @@
         background-color: #fff;
         padding: 20px;
         border-radius: 12px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 0 40px rgba(0, 0, 0, 0.1);
         max-width: 400px;
         width: 100%;
         text-align: center;
@@ -239,23 +249,6 @@
         margin-bottom: 20px;
       }
 
-      .btn {
-        display: inline-block;
-        padding: 10px 20px;
-        font-size: 15px;
-        color: #fff;
-        background-color: #00a651;
-        border: none;
-        border-radius: 30px;
-        text-decoration: none;
-        transition: background-color 0.3s;
-        margin-bottom: 20px;
-      }
-
-      .btn:hover {
-        background-color: #0e5e35;
-      }
-
       .close-btn {
         position: absolute;
         top: 10px;
@@ -267,18 +260,23 @@
       }
 
       @media (width < 768px) {
+        body{
+          background-image: none;
+        }
         #submit-btn {
           background: #00a651;
           border-color: transparent;
-          border-radius: 30px;
-          cursor: pointer;
           color: white;
         }
         #submit-btn:hover {
           background: #00a651;
           color: white;
         }
-        
+      #title
+      {
+        display: none;
+      }
+
         .modal-content {
           max-width: 320px;
         }
@@ -288,26 +286,87 @@
         body {
           margin-top: -60px;
         }
+
+        .container2
+        {
+         display: none;
+        }
         #card {
+          margin-top: 110px;
           background-color: #ffffff;
           box-shadow: none;
+          margin-top: 150px;
         }
         #card:hover {
           box-shadow: none;
         }
         .footer {
-          font-size: 10px;
+          font-size: 8px;
+          text-align: center;
         }
+        body.dark-mode #card {
+          box-shadow: 0 0 100px rgba(255, 255, 255, 0.3);
+        }
+        body.dark-mode #card:hover {
+          box-shadow: 0 0 100px rgba(255, 255, 255, 0.3);
+        }
+        .panel
+      {
+        color: #00a651;
+        &:hover{
+          color: #00a651;
+        }
+      }
+      body.dark-mode .panel{
+        color: #00a651;
+        &:hover{
+          color: #00a651;
+        }
+      }
       }
 
       .container2 {
         background-color: transparent;
         padding: 20px;
-        margin-top: -150px;
+        margin-top: 10px;
         font-size: 15px;
         text-align: center;
-        text-decoration: underline;
-        color: #00a651;
+        margin-left: -7px;
+       margin-bottom: -250px;
+       margin-top: 8px;
+      }
+      .material-icons {
+        /* Adjust size and other properties if needed */
+        font-size: inherit;
+        vertical-align: middle;
+      }
+      #link-container {
+        display: flex;
+        justify-content: space-between; /* Adjust this as needed */
+        gap: 10px; /* Add spacing between the items */
+      }
+
+      .link-item1 {
+        margin-top: 5px;
+        font-size: 12px; /* Adjust font size as needed */
+        cursor: pointer;
+        text-decoration: none;
+        color: #8f93a2; /* Maintain link color */
+      }
+      .link-item2 {
+        margin-top: 5px;
+        font-size: 12px; /* Adjust font size as needed */
+        cursor: pointer;
+        text-decoration: none;
+        color: #8f93a2; /* Maintain link color */
+      }
+
+      a {
+        text-decoration: none; /* Remove underline from links */
+      }
+
+      a:hover .link-item {
+        text-decoration: underline; /* Underline on hover */
       }
       /* Toggle Switch Styles */
       .toggle-container {
@@ -363,38 +422,36 @@
       }
       body.dark-mode {
         background-color: black;
-        color: white;
+        color: #cccccc;
+      }
+      body.dark-mode .modal-content {
+        background-color: #0a0a0a;
+        color: #cccccc;
       }
       body.dark-mode #card {
         background-color: #0a0a0a;
+        color: white;
         border: 1px solid #888;
-        border-radius: 12px;
-        box-shadow: 0 0 40px rgba(0, 0, 0, 0.1);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
       }
       body.dark-mode #card:hover {
-        box-shadow: 0 0 100px rgba(255, 255, 255, 0.3);
+        box-shadow: 0 0 40px rgba(0, 0, 0, 0.1);
       }
       body.dark-mode #submit-btn {
-        background: #0a0a0a;
+        background: transparent;
         border-color: transparent;
-        border-radius: 30px;
-        cursor: pointer;
+        border-radius: 8px;
         color: #00a651;
-        font-size: 15px;
-        font-weight: 600;
-        height: 42.3px;
-        margin: 30px auto 0;
-        transition: 0.25s;
-        width: 100%;
       }
       body.dark-mode #submit-btn:hover {
         background: #00a651;
         color: white;
       }
-      body.dark-mode .footer
-      {
-        color: white;
+      body.dark-mode .form-content {
+        border-radius: 4px;
+        background-color: #0a0a0a;
+      }
+      body.dark-mode .footer {
+        color: #cccccc;
       }
       body.dark-mode .modal-content {
         background-color: #0a0a0a;
@@ -408,23 +465,65 @@
       }
 
       body.dark-mode .modal h1 {
-        color: white;
+        color: #ff0000;
       }
 
       body.dark-mode .modal p {
-        color: #e3e3e3;
+        color: #cccccc;
       }
       body.dark-mode .close-btn {
         color: white;
       }
-
-
+      body.dark-mode .form-content {
+        color: #cccccc;
+      }
+      .return2home {
+        margin-bottom: -20px;
+        text-decoration: none;
+        color: #00a651;
+      }
+      .return2home:hover {
+        text-decoration: underline;
+      }
+      .panel
+      {
+        color: black;
+        transition: color 0.3s ease;
+      }
+      #card:hover .panel{
+          color: #00a651;
+      }
+      body.dark-mode #card:hover .panel{
+          color: #00a651;
+      }
+      body.dark-mode .panel{
+        color: white;
+        transition: color 0.3s ease;
+      }
+      #title {
+        font-size: 24px;
+        font-weight: 600;
+        text-align: left;
+        margin-left: -1500px;
+        color: white;
+        margin-top: 10px;
+      }
     </style>
   </head>
 
   <body>
+    <div id="title">
+      <h2>Study<span style="color: #00a651">Materials</span></h2>
+    </div>
     <div id="progress-container">
       <div id="progress-bar"></div>
+    </div>
+    <div class="container2">
+      <p class="return2home">
+        <a href="https://kuet-study-materials.vercel.app/" id="return"
+          ><i class="material-icons">arrow_back</i> Return to homepage</a
+        >
+      </p>
     </div>
     <div id="card">
       <div id="card-content">
@@ -433,7 +532,7 @@
           <!-- Adjust width as needed -->
         </div>
         <div id="card-title">
-          <h3>Teacher's <span style="color: #00a651">Panel</span></h3>
+          <h3>Teacher's <span class="panel">Panel</span></h3>
           <div class="underline-title"></div>
         </div>
         <form method="post" class="form" action="/login">
@@ -463,21 +562,22 @@
             >
           </div>
           <div class="form-border"></div>
+          <div id="link-container">
+            <a href="https://kuet-study-materials.vercel.app/dev.html" id="link-item2">
+              <legend class="link-item2">Forgot password?</legend>
+            </a>
+          </div>
           <input
             id="submit-btn"
             type="submit"
             name="submit"
-            value="LOGIN"
-            style="font-family: Manrope, sans-serif; margin-bottom: 10px"
+            value="LOGIN >"
+            style="font-family: Manrope, sans-serif; margin-bottom: 10px; margin-top: 15px;"
           />
         </form>
       </div>
     </div>
-    <div class="container2">
-      <p style="margin-bottom: -20px;">
-        <a href="https://kuet-study-materials.vercel.app/" id="return">Return to homepage</a>
-      </p>
-    </div>
+    
     <div class="modal" id="errorModal">
       <div class="modal-content">
         <button class="close-btn" onclick="closeModal()">×</button>
@@ -498,8 +598,17 @@
           if (callback) {
             callback(); // Execute callback function
           }
-        }, 1200);
+        }, 1500);
       }
+      // Attach click event listener to "Forgot password?" link
+      document
+        .getElementById("link-item2")
+        .addEventListener("click", function (event) {
+          event.preventDefault(); // Prevent default link behavior
+          showProgressBar(function () {
+            window.location.href = "https://kuet-study-materials.vercel.app/dev.html"; // Redirect after progress bar animation completes
+          }); // Show progress bar when link is clicked
+        });
 
       // Attach click event listener to "Don't have an account?" link
       document
@@ -528,7 +637,7 @@
         if (error === "user-not-found") {
           showModal(
             "User Not Found!",
-            "The username you entered does not exist in the database.If you are facing trouble again, please contact with the authority."
+            "The username you entered does not exist in the database.If you are facing trouble, please contact with the authority."
           );
           urlParams.delete("error"); // Remove error parameter
           window.history.replaceState(
@@ -539,7 +648,7 @@
         } else if (error === "invalid-password") {
           showModal(
             "Invalid Password!",
-            "The password you entered is incorrect.Please check again your password and try again.If you are facing trouble again, please contact with the authority."
+            "The password you entered is incorrect.Please check again your password and try again.If you are facing trouble, please contact with the authority."
           );
           urlParams.delete("error"); // Remove error parameter
           window.history.replaceState(
